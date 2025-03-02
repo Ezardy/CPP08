@@ -77,6 +77,38 @@
 	if (!caught)                                                                             \
 		throw std::logic_error("No exception was catched:" TEST_EXPAND_AND_STRINGIFY(__LINE__));
 
+#define TEST_EXCEPTION_MESSAGE(X, E, M)                                                      \
+	caught = false;                                                                          \
+	try {                                                                                    \
+		X;                                                                                   \
+	} catch (const E& e) {                                                                   \
+		caught = true;                                                                       \
+		if (e.what() != std::string(M))                                                      \
+			throw std::logic_error("Wrong exception message:" TEST_EXPAND_AND_STRINGIFY(     \
+									   __LINE__) "\nCATCHED MESSAGE:\n"                      \
+								   + std::string(e.what()) + "\nEXPECTED MESSAGE:\n" + M);   \
+	} catch (const std::exception& e) {                                                      \
+		throw std::logic_error(                                                              \
+			std::string("Wrong exception catched:" TEST_EXPAND_AND_STRINGIFY(__LINE__) ": ") \
+			+ e.what());                                                                     \
+	}                                                                                        \
+	if (!caught)                                                                             \
+		throw std::logic_error("No exception was catched:" TEST_EXPAND_AND_STRINGIFY(__LINE__));
+
+#define TEST_ANY_EXCEPTION_MESSAGE(X, M)                                                   \
+	caught = false;                                                                        \
+	try {                                                                                  \
+		X;                                                                                 \
+	} catch (const std::exception& e) {                                                    \
+		caught = true;                                                                     \
+		if (e.what() != std::string(M))                                                    \
+			throw std::logic_error("Wrong exception message:" TEST_EXPAND_AND_STRINGIFY(   \
+									   __LINE__) "\nCATCHED MESSAGE:\n"                    \
+								   + std::string(e.what()) + "\nEXPECTED MESSAGE:\n" + M); \
+	}                                                                                      \
+	if (!caught)                                                                           \
+		throw std::logic_error("No exception was catched:" TEST_EXPAND_AND_STRINGIFY(__LINE__));
+
 #define TEST_ANY_EXCEPTION(X)           \
 	caught = false;                     \
 	try {                               \
