@@ -13,6 +13,16 @@
 			"cwd": "${workspaceFolder}",
 			"preRunCommands": ["breakpoint name configure --disable cpp_exception"],
 			"preLaunchTask": "ex01 debug build"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "ex02",
+			"program": "${workspaceFolder}/ex02/test",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"preRunCommands": ["breakpoint name configure --disable cpp_exception"],
+			"preLaunchTask": "ex02 debug build"
 		}
 	]
 }
