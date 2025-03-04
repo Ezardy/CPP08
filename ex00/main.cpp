@@ -2,9 +2,6 @@
 #include <cstddef>
 #include <deque>
 #include <list>
-#include <stack>
-#include <streambuf>
-#include <string>
 #include <vector>
 
 #include "../test.hpp"

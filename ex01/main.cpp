@@ -1,13 +1,8 @@
 #include <algorithm>
 #include <cstddef>
 #include <cstdlib>
-#include <deque>
 #include <limits>
-#include <list>
-#include <stack>
 #include <stdexcept>
-#include <streambuf>
-#include <string>
 #include <vector>
 
 #include "../test.hpp"
@@ -108,7 +103,7 @@ TEST_START(Span_shortestSpan)
 		boundarySpan.addNumber(std::numeric_limits<int>::min());
 		boundarySpan.addNumber(std::numeric_limits<int>::max());
 		TEST_ASSERT(boundarySpan.shortestSpan() == static_cast<unsigned>(std::numeric_limits<int>::max() - std::numeric_limits<int>::min()))
-	
+
 		Span	defaultSpan(5);
 		TEST_EXCEPTION(defaultSpan.shortestSpan(), std::out_of_range)
 		defaultSpan.addNumber(6);
@@ -119,7 +114,7 @@ TEST_START(Span_shortestSpan)
 		defaultSpan.addNumber(9);
 		defaultSpan.addNumber(11);
 		TEST_ASSERT(defaultSpan.shortestSpan() == 2)
-		
+
 		Span				randomSpan(15000);
 		std::vector<int>	set(15000);
 		set[0] = rand();
@@ -150,7 +145,7 @@ TEST_START(Span_longestSpan)
 		TEST_EXCEPTION(tSpan.longestSpan(), std::out_of_range)
 		tSpan.addNumber(2);
 		TEST_ASSERT(tSpan.longestSpan() == 1)
-	
+
 		Span				span(15002);
 		std::vector<int>	arr(15000);
 		std::generate(arr.begin(), arr.end(), generate);

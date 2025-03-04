@@ -13,7 +13,7 @@ depflags = -MT $@ -MMD -MP -MF $*.d
 	c++ $(cflags) $(depflags) -o $@ -c $<
 
 clean:
-	rm -f $(obj) $(obj:.o=.d) main.o main.d test.o test.d
+	rm -f $(obj) $(obj:.o=.d)
 
 fclean: clean
 	rm -f test

@@ -2,7 +2,6 @@
 #define EX02_MUTANTSTACK_HPP
 
 #include <new>
-#include <queue>
 #include <stack>
 
 template<typename T, typename Container = std::deque<T> >
